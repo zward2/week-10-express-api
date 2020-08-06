@@ -17,7 +17,11 @@ app.get('/', async (req, res) => {
 app.post('/', async (apiRequest, apiResponse) => {
   const newProduct = apiRequest.body;
   await createProduct(newProduct);
-  apiResponse.send({ message: 'New product created.' });
+  apiResponse.send({ 
+    message: 'New product created.',
+  allProducts: await getProducts(),
+thanks: true
+ });
 });
 
 // endpoint to delete a product
@@ -29,6 +33,7 @@ app.delete('/:productId', async (apiRequest, apiResponse) => {
 // endpoint to update a product
 app.put('/:id', async (apiRequest, apiResponse) => {
   const updatedProduct = apiRequest.body;
+  console.log({ updatedProduct })
   await updateProduct(apiRequest.params.id, updatedProduct);
   apiResponse.send({ message: 'Product updated.' });
 });

@@ -1,0 +1,23 @@
+### Test the home page endpoint
+
+
+GET http://localhost:3001
+
+### Test a 404
+GET http://localhost:3001/testing-404
+
+### Test creating a Product
+POST http://localhost:3001/
+Content-Type: application/json
+
+{
+    "title": "Golf Shirts"
+}
+
+### Test the PUT which should change a product
+PUT http://localhost:3001/5f2b5508d79a59119ea4dd1f
+Content-Type: application/json
+
+{
+    "title": "Way Mo Better Shirt"
+}
